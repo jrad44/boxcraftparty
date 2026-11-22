@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Box Craft Party</title>
+<meta name="description" content="A cozy crafting game for kids: paint delivery boxes, cut paper, glue on googly eyes and decorations. No accounts, works offline.">
+<link rel="icon" href="img/icon.png">
+<meta property="og:title" content="Box Craft Party">
+<meta property="og:description" content="Paint, cut, glue and decorate cardboard boxes: a cozy crafting game for kids.">
+<meta property="og:image" content="img/banner.jpg">
+<style>
+  :root { --bg: #fff8ec; --ink: #3b2412; --soft: #7a5a3c; --card: #ffffff; --line: #ecd9bd; --accent: #e8505b; --sun: #ffd54a; --sun-d: #c98f00; --hero: #4a2416; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #1e140d; --ink: #f6e9d8; --soft: #d0b597; --card: #2b1d13; --line: #4a3524; --hero: #2a1309; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.55 "Baloo 2", "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: var(--accent); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+  header.hero { background: radial-gradient(ellipse at 70% 0%, #7a3a22, var(--hero) 70%); color: #fff; padding: 40px 0 56px; }
+  .hero .wrap { display: grid; grid-template-columns: 1fr 1.25fr; gap: 32px; align-items: center; }
+  .brand { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+  .brand img { width: 64px; height: 64px; border-radius: 16px; box-shadow: 0 6px 18px rgba(0,0,0,.35); }
+  h1 { font-size: clamp(36px, 6vw, 56px); line-height: 1; margin: 0; letter-spacing: .5px; text-shadow: 0 4px 0 #7a1f17; }
+  h1 span:nth-child(2) { color: #ffe066; } h1 span:nth-child(3) { color: #9be7ff; }
+  .tag { font-size: 20px; opacity: .92; margin: 14px 0 22px; }
+  .stores { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px; font-weight: 800; text-decoration: none; }
+  .btn.play { background: linear-gradient(#ffe57a, var(--sun)); color: #5d3200; box-shadow: 0 4px 0 var(--sun-d); }
+  .btn.soon { background: rgba(255,255,255,.12); color: #fff; border: 2px solid rgba(255,255,255,.35); }
+  .shot { width: 100%; border-radius: 18px; box-shadow: 0 14px 40px rgba(0,0,0,.45); display: block; }
+  section { padding: 44px 0 8px; }
+  h2 { font-size: 28px; margin: 0 0 14px; }
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  .f { background: var(--card); border: 2px solid var(--line); border-radius: 18px; padding: 16px; }
+  .f b { display: block; font-size: 19px; } .f .e { font-size: 34px; line-height: 1.1; }
+  .gallery { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; align-items: start; }
+  .gallery .col { display: grid; gap: 14px; }
+  .gallery img { width: 100%; border-radius: 14px; border: 2px solid var(--line); display: block; }
+  .parents { background: var(--card); border: 2px solid var(--line); border-radius: 22px; padding: 20px 22px; }
+  .parents ul { padding-left: 20px; margin: 8px 0; } .parents li { margin: 6px 0; }
+  footer { margin-top: 48px; padding: 24px 0 40px; border-top: 2px solid var(--line); color: var(--soft); font-size: 15px; }
+  footer nav { display: flex; flex-wrap: wrap; gap: 18px; margin-bottom: 8px; }
+  .fill { background: #fff1a8; color: #3b2412; padding: 0 3px; border-radius: 3px; }
+  @media (max-width: 760px) { .hero .wrap, .gallery { grid-template-columns: 1fr; } header.hero { padding-top: 28px; } }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="brand"><img src="img/icon.png" alt="" width="64" height="64"><strong>Box Craft Party</strong></div>
+      <h1><span>Box</span> <span>Craft</span> <span>Party!</span></h1>
+      <p class="tag">A cozy crafting game for kids. Paint a cardboard box, cut out paper shapes, squeeze on the glue and stick on googly eyes, pom-poms and holiday decorations.</p>
+      <div class="stores">
+        <span class="btn soon">Coming soon: App Store</span>
+        <span class="btn soon">Coming soon: Google Play</span>
+      </div>
+    </div>
+    <img class="shot" src="img/home.jpg" alt="The Box Craft Party home screen: a plaid box with googly eyes and a holiday hat in a cozy cabin" width="1200" height="552">
+  </div>
+</header>
+
+<main class="wrap">
+  <section>
+    <h2>What kids do</h2>
+    <div class="features">
+      <div class="f"><div class="e">🖌️</div><b>Paint &amp; wrap</b>Finger-paint, rainbow brushes, stamps, or gift-wrap a whole side.</div>
+      <div class="f"><div class="e">✂️</div><b>Cut paper</b>Draw any shape to cut it out, or let the scissors cut a heart, star or tree.</div>
+      <div class="f"><div class="e">🧴</div><b>Glue &amp; glitter</b>Glue first, then stick things on. No glue? It falls off with a boing!</div>
+      <div class="f"><div class="e">👀</div><b>Decorate</b>Googly eyes that wobble when you tilt, pom-poms, gems, ornaments and stickers.</div>
+      <div class="f"><div class="e">🎀</div><b>Trim the edges</b>Twinkle lights, tinsel, ribbon, snow and more.</div>
+      <div class="f"><div class="e">🖼️</div><b>My Shelf</b>Every finished box is saved to come back to later.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Screenshots</h2>
+    <div class="gallery">
+      <div class="col">
+        <img src="img/craft.jpg" alt="Crafting a box with tools on the left and stickers on the right" width="1200" height="552" loading="lazy">
+        <img src="img/treasure.jpg" alt="A bonus sticker revealed as a treasure to keep" width="1200" height="552" loading="lazy">
+      </div>
+      <img src="img/tablet.jpg" alt="Box Craft Party on a tablet held upright, with a googly eye glued on" width="700" height="1016" loading="lazy">
+    </div>
+  </section>
+
+  <section id="parents">
+    <h2>For parents</h2>
+    <div class="parents">
+      <ul>
+        <li><b>No accounts, no chat, no in-app purchases.</b> Nothing to sign up for.</li>
+        <li><b>Your child's creations stay on your device.</b> We don't collect personal information.</li>
+        <li><b>Kid-safe ads keep the app free.</b> A short ad now and then, only after a finished box goes on the shelf, never while crafting. Ads are set up for children: no personalized ads, no tracking, general-audience content only. There's also an optional video kids can choose to watch for bonus stickers.</li>
+        <li><b>Grown-ups area</b> behind a grown-up question, with the privacy policy and a button to delete saved crafts.</li>
+        <li>Works offline, on phones and tablets (iPhone, iPad, Android).</li>
+      </ul>
+      <p>Read the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Use</a>. Questions? Email <span class="fill">[CONTACT EMAIL]</span>.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="#parents">For parents</a></nav>
+    © <span id="yr">2026</span> <span class="fill">[YOUR NAME OR COMPANY NAME]</span>. All rights reserved.
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

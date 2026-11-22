@@ -1,0 +1,4 @@
+# AdMob needs this file at the ROOT of the website listed in your store pages, e.g. https://yourname.github.io/app-ads.txt
+# Replace the line below with the exact line AdMob gives you (Apps > View all apps > app-ads.txt). It contains your
+# publisher ID (pub-XXXXXXXXXXXXXXXX).
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
