@@ -8,7 +8,7 @@
 <link rel="icon" href="img/icon.png">
 <meta property="og:title" content="Box Craft Party">
 <meta property="og:description" content="Paint, cut, glue and decorate cardboard boxes: a cozy crafting game for kids.">
-<meta property="og:image" content="img/banner.jpg">
+<meta property="og:image" content="https://boxcraftparty.com/img/banner.jpg">
 <style>
   :root { --bg: #fff8ec; --ink: #3b2412; --soft: #7a5a3c; --card: #ffffff; --line: #ecd9bd; --accent: #e8505b; --sun: #ffd54a; --sun-d: #c98f00; --hero: #4a2416; }
   @media (prefers-color-scheme: dark) { :root { --bg: #1e140d; --ink: #f6e9d8; --soft: #d0b597; --card: #2b1d13; --line: #4a3524; --hero: #2a1309; } }
@@ -27,15 +27,31 @@
   .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px; font-weight: 800; text-decoration: none; }
   .btn.play { background: linear-gradient(#ffe57a, var(--sun)); color: #5d3200; box-shadow: 0 4px 0 var(--sun-d); }
   .btn.soon { background: rgba(255,255,255,.12); color: #fff; border: 2px solid rgba(255,255,255,.35); }
-  .shot { width: 100%; border-radius: 18px; box-shadow: 0 14px 40px rgba(0,0,0,.45); display: block; }
+  /* device frames around the screenshots */
+  .phone, .tablet { position: relative; background: #121212; box-shadow: 0 0 0 1px #3a3a3a inset, 0 18px 40px rgba(0,0,0,.35); }
+  .phone { padding: 1.9% 2.6%; border-radius: clamp(18px, 3.2vw, 34px); }
+  .phone img, .tablet img { display: block; width: 100%; height: auto; border-radius: clamp(10px, 1.9vw, 22px); background: #4a2416; }
+  .phone::after { content: ''; position: absolute; right: -3px; top: 30%; width: 3px; height: 16%; border-radius: 0 3px 3px 0; background: #2a2a2a; }
+  .tablet { padding: 3.2%; border-radius: clamp(20px, 4vw, 36px); }
+  .hero-shot { transform: rotate(-1.5deg); }
+  .hero-shot .phone { box-shadow: 0 0 0 1px #3a3a3a inset, 0 24px 60px rgba(0,0,0,.55); }
   section { padding: 44px 0 8px; }
   h2 { font-size: 28px; margin: 0 0 14px; }
   .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
   .f { background: var(--card); border: 2px solid var(--line); border-radius: 18px; padding: 16px; }
   .f b { display: block; font-size: 19px; } .f .e { font-size: 34px; line-height: 1.1; }
-  .gallery { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; align-items: start; }
-  .gallery .col { display: grid; gap: 14px; }
-  .gallery img { width: 100%; border-radius: 14px; border: 2px solid var(--line); display: block; }
+  .lead { color: var(--soft); margin: -6px 0 18px; }
+  .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 24px; margin: 0; padding: 0; list-style: none; }
+  .gallery li:first-child { grid-column: 1 / -1; }
+  .gallery li:first-child .phone { max-width: 820px; margin: 0 auto; }
+  figure { margin: 0; }
+  figcaption { margin-top: 12px; text-align: center; font-size: 16px; color: var(--soft); }
+  figcaption b { display: block; color: var(--ink); font-size: 18px; }
+  .swipe-hint { display: none; }
+  .tablet-band { display: grid; grid-template-columns: minmax(220px, 320px) 1fr; gap: 36px; align-items: center; background: var(--card);
+    border: 2px solid var(--line); border-radius: 26px; padding: 28px; }
+  .tablet-band h2 { margin-bottom: 8px; }
+  .tablet-band ul { padding-left: 20px; margin: 8px 0 0; } .tablet-band li { margin: 6px 0; }
   .parents { background: var(--card); border: 2px solid var(--line); border-radius: 22px; padding: 20px 22px; }
   .parents ul { padding-left: 20px; margin: 8px 0; } .parents li { margin: 6px 0; }
   footer { margin-top: 48px; padding: 24px 0 40px; border-top: 2px solid var(--line); color: var(--soft); font-size: 15px; }
@@ -44,7 +60,20 @@
   .skip:focus { left: 8px; }
   a:focus-visible, .btn:focus-visible { outline: 3px solid #ffb300; outline-offset: 3px; }
   .fill { background: #fff1a8; color: #3b2412; padding: 0 3px; border-radius: 3px; }
-  @media (max-width: 760px) { .hero .wrap, .gallery { grid-template-columns: 1fr; } header.hero { padding-top: 28px; } }
+  @media (max-width: 760px) {
+    .hero .wrap { grid-template-columns: 1fr; } header.hero { padding-top: 28px; }
+    .hero-shot { transform: none; margin-top: 6px; }
+    /* phones: swipe through the screenshots */
+    .gallery { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -16px; padding: 4px 16px 14px;
+      scroll-padding: 0 16px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .gallery::-webkit-scrollbar { display: none; }
+    .gallery li { flex: 0 0 86%; scroll-snap-align: center; }
+    .gallery li:first-child .phone { max-width: none; }
+    .swipe-hint { display: block; text-align: right; color: var(--soft); font-size: 15px; margin: -8px 0 6px; }
+    .tablet-band { grid-template-columns: 1fr; padding: 20px; gap: 20px; }
+    .tablet-band .tablet { max-width: 260px; margin: 0 auto; }
+  }
+  @media (prefers-reduced-motion: reduce) { .hero-shot { transform: none; } }
 </style>
 </head>
 <body>
@@ -60,7 +89,7 @@
         <span class="btn soon">Coming soon: Google Play</span>
       </div>
     </div>
-    <img class="shot" src="img/home.jpg" alt="The Box Craft Party home screen: a plaid box with googly eyes and a holiday hat in a cozy cabin" width="1200" height="552">
+    <div class="hero-shot"><div class="phone"><picture><source type="image/webp" srcset="img/shots/home-720.webp 720w, img/shots/home-1280.webp 1280w" sizes="(min-width: 761px) 560px, 92vw"><img src="img/shots/home-1280.jpg" srcset="img/shots/home-720.jpg 720w, img/shots/home-1280.jpg 1280w" sizes="(min-width: 761px) 560px, 92vw" width="1280" height="591" alt="The Box Craft Party home screen: a plaid box with googly eyes and a holiday hat in a cozy cabin with a crackling fire" fetchpriority="high" decoding="async"></picture></div></div>
   </div>
 </header>
 
@@ -77,14 +106,31 @@
     </div>
   </section>
 
+  <section aria-labelledby="look">
+    <h2 id="look">Take a look</h2>
+    <p class="lead">Real screens from the game: four cozy rooms, from a crackling-fire cabin to a starry night.</p>
+    <p class="swipe-hint" aria-hidden="true">Swipe for more →</p>
+    <ul class="gallery">
+      <li><figure><div class="phone"><picture><source type="image/webp" srcset="img/shots/craft-720.webp 720w, img/shots/craft-1280.webp 1280w" sizes="(min-width: 761px) 50vw, 86vw"><img src="img/shots/craft-1280.jpg" srcset="img/shots/craft-720.jpg 720w, img/shots/craft-1280.jpg 1280w" sizes="(min-width: 761px) 50vw, 86vw" width="1280" height="591" alt="Decorating a silver robot box with googly eyes, buttons and twinkle lights; stickers on the right" loading="lazy" decoding="async"></picture></div><figcaption><b>Decorate anything</b>Googly eyes, pom-poms, gems, hats and 200+ stickers.</figcaption></figure></li>
+      <li><figure><div class="phone"><picture><source type="image/webp" srcset="img/shots/cut-720.webp 720w, img/shots/cut-1280.webp 1280w" sizes="(min-width: 761px) 50vw, 86vw"><img src="img/shots/cut-1280.jpg" srcset="img/shots/cut-720.jpg 720w, img/shots/cut-1280.jpg 1280w" sizes="(min-width: 761px) 50vw, 86vw" width="1280" height="591" alt="Scissors cutting a heart out of red paper" loading="lazy" decoding="async"></picture></div><figcaption><b>Cut real shapes</b>Draw any shape, or let the scissors cut a heart, star or tree.</figcaption></figure></li>
+      <li><figure><div class="phone"><picture><source type="image/webp" srcset="img/shots/tada-720.webp 720w, img/shots/tada-1280.webp 1280w" sizes="(min-width: 761px) 50vw, 86vw"><img src="img/shots/tada-1280.jpg" srcset="img/shots/tada-720.jpg 720w, img/shots/tada-1280.jpg 1280w" sizes="(min-width: 761px) 50vw, 86vw" width="1280" height="591" alt="A reindeer box with a red nose and holiday hat celebrating with confetti" loading="lazy" decoding="async"></picture></div><figcaption><b>Ta-da!</b>Every finished box gets a little celebration.</figcaption></figure></li>
+      <li><figure><div class="phone"><picture><source type="image/webp" srcset="img/shots/shelf-720.webp 720w, img/shots/shelf-1280.webp 1280w" sizes="(min-width: 761px) 50vw, 86vw"><img src="img/shots/shelf-1280.jpg" srcset="img/shots/shelf-720.jpg 720w, img/shots/shelf-1280.jpg 1280w" sizes="(min-width: 761px) 50vw, 86vw" width="1280" height="591" alt="A shelf full of decorated boxes: a kitty, a car, a present, a monster, a robot and a reindeer" loading="lazy" decoding="async"></picture></div><figcaption><b>My Shelf</b>Every creation is saved to come back to.</figcaption></figure></li>
+      <li><figure><div class="phone"><picture><source type="image/webp" srcset="img/shots/treasure-720.webp 720w, img/shots/treasure-1280.webp 1280w" sizes="(min-width: 761px) 50vw, 86vw"><img src="img/shots/treasure-1280.jpg" srcset="img/shots/treasure-720.jpg 720w, img/shots/treasure-1280.jpg 1280w" sizes="(min-width: 761px) 50vw, 86vw" width="1280" height="591" alt="A bonus tennis-ball sticker revealed as a treasure to keep" loading="lazy" decoding="async"></picture></div><figcaption><b>New sticker packs every week</b>Space, dinos, under the sea, holidays and more.</figcaption></figure></li>
+    </ul>
+  </section>
+
   <section>
-    <h2>Screenshots</h2>
-    <div class="gallery">
-      <div class="col">
-        <img src="img/craft.jpg" alt="Crafting a box with tools on the left and stickers on the right" width="1200" height="552" loading="lazy">
-        <img src="img/treasure.jpg" alt="A bonus sticker revealed as a treasure to keep" width="1200" height="552" loading="lazy">
+    <div class="tablet-band">
+      <div class="tablet"><picture><source type="image/webp" srcset="img/shots/tablet-480.webp 480w, img/shots/tablet-800.webp 800w" sizes="(min-width: 761px) 320px, 260px"><img src="img/shots/tablet-800.jpg" srcset="img/shots/tablet-480.jpg 480w, img/shots/tablet-800.jpg 800w" sizes="(min-width: 761px) 320px, 260px" width="800" height="1145" alt="Box Craft Party on a tablet held upright: a kitty box with a mustache and bow tie, stickers along the bottom" loading="lazy" decoding="async"></picture></div>
+      <div>
+        <h2>Made for phones and tablets</h2>
+        <p>Big, friendly buttons for little fingers, on iPhone, iPad and Android.</p>
+        <ul>
+          <li>Plays sideways or held upright on tablets</li>
+          <li>Works offline, so it's great for car rides</li>
+          <li>Gentle on the battery: it slows down when nobody's touching it</li>
+        </ul>
       </div>
-      <img src="img/tablet.jpg" alt="Box Craft Party on a tablet held upright, with a googly eye glued on" width="700" height="1016" loading="lazy">
     </div>
   </section>
 
