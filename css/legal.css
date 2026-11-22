@@ -11,4 +11,5 @@ h2 { font-size: 19px; margin: 26px 0 6px; color: var(--accent); }
 ul { padding-left: 22px; }
 li { margin: 4px 0; }
 a { color: var(--accent); }
+a:focus-visible { outline: 3px solid #ffb300; outline-offset: 2px; }
 .fill { background: var(--fill); padding: 0 3px; border-radius: 3px; }

@@ -40,11 +40,15 @@
   .parents ul { padding-left: 20px; margin: 8px 0; } .parents li { margin: 6px 0; }
   footer { margin-top: 48px; padding: 24px 0 40px; border-top: 2px solid var(--line); color: var(--soft); font-size: 15px; }
   footer nav { display: flex; flex-wrap: wrap; gap: 18px; margin-bottom: 8px; }
+  .skip { position: absolute; left: -9999px; top: 8px; background: #fff; color: #3b2412; padding: 8px 14px; border-radius: 8px; z-index: 10; }
+  .skip:focus { left: 8px; }
+  a:focus-visible, .btn:focus-visible { outline: 3px solid #ffb300; outline-offset: 3px; }
   .fill { background: #fff1a8; color: #3b2412; padding: 0 3px; border-radius: 3px; }
   @media (max-width: 760px) { .hero .wrap, .gallery { grid-template-columns: 1fr; } header.hero { padding-top: 28px; } }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="hero">
   <div class="wrap">
     <div>
@@ -60,7 +64,7 @@
   </div>
 </header>
 
-<main class="wrap">
+<main class="wrap" id="main">
   <section>
     <h2>What kids do</h2>
     <div class="features">
@@ -94,15 +98,15 @@
         <li><b>Grown-ups area</b> behind a grown-up question, with the privacy policy and a button to delete saved crafts.</li>
         <li>Works offline, on phones and tablets (iPhone, iPad, Android).</li>
       </ul>
-      <p>Read the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Use</a>. Questions? Email <span class="fill">[CONTACT EMAIL]</span>.</p>
+      <p>Read the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Use</a>. Questions? Email <a href="mailto:hello@boxcraftparty.com">hello@boxcraftparty.com</a>. See also our <a href="accessibility.html">accessibility statement</a>.</p>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <nav><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="#parents">For parents</a></nav>
-    © <span id="yr">2026</span> <span class="fill">[YOUR NAME OR COMPANY NAME]</span>. All rights reserved.
+    <nav><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="#parents">For parents</a><a href="accessibility.html">Accessibility</a><a href="mailto:hello@boxcraftparty.com">Contact</a></nav>
+    © <span id="yr">2026</span> Jared Lewis. All rights reserved.
   </div>
 </footer>
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
